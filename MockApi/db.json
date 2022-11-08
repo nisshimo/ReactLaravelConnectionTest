@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "typicode"
+    },
+    {
+      "id": 2,
+      "username": "hogehoge"
+    },
+    {
+      "id": 3,
+      "username": "hogehoge"
+    }
+  ]
+}

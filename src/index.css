@@ -1,0 +1,8 @@
+body {
+  margin: 0;
+  font-family: "Inter";
+  font-size: "16px";
+  color: "#364150";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
