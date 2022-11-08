@@ -1,46 +1,116 @@
-# Getting Started with Create React App
+# ReactLaravelConnectionTest
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+```
+git clone git@github.com:nisshimo/ReactLaravelConnectionTest.git
+```
 
-## Available Scripts
+### Local Server(MockApi)の起動方法
 
-In the project directory, you can run:
+`./ReactLaravelConnectionTest` 直下で、以下を実行する。
 
-### `npm start`
+```
+$ node MockApi/server.js
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+localhost:8000 でサーバーが起動します。
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```
+curl http://localhost:8000/users
+```
 
-### `npm test`
+とすると、以下の出力が得られます。
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+{
+  "results": [
+    {
+      "id": 1,
+      "username": "typicode"
+    },
+    {
+      "id": 2,
+      "username": "hogehoge"
+    },
+    {
+      "id": 3,
+      "username": "hogehoge"
+    }
+  ]
+}
+```
 
-### `npm run build`
+```
+curl http://localhost:8000/users
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+とすると、以下の出力が得られます。
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+{
+  "results": [
+    {
+      "id": 1,
+      "username": "typicode"
+    },
+    {
+      "id": 2,
+      "username": "hogehoge"
+    },
+    {
+      "id": 3,
+      "username": "hogehoge"
+    }
+  ]
+}
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+また、
 
-### `npm run eject`
+```
+curl http://localhost:8000/users/1
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+とすると、以下の出力が得られます。
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+{
+  "user": {
+    "id": 1,
+    "username": "typicode"
+  }
+}
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## React App の動作の確認
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### セットアップ方法
 
-## Learn More
+```
+yarn install
+yarn start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+で、React のサーバーが起動します。
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+`localhost:3000/users` にアクセスすると、ユーザー一覧ページ
+`localhost:3000/users/:id` にアクセスすると、ユーザー詳細ページが表示されると思います。
+
+メニューバーには、受注/配車等が見えていると思いますが、これらは無視していただいて大丈夫です。
+
+## React と Laravel の連携のテスト
+
+`src/App.tsx`の末尾に、以下を書いています。
+
+```
+if (document.getElementById("reactApp")) {
+  ReactDOM.render(<App />, document.getElementById("reactApp"));
+}
+```
+
+！[https://migisanblog.com/laravel-react-install/](https://migisanblog.com/laravel-react-install/)
+
+上の記事を参照して、Laravel で App を読み込んだときに
+
+- Api の結果を受け取って正しくレンダリングできているか？
+- User 一覧の各 User を押したときに、正しく User 詳細ページに飛ぶか？
+  を検証していただけると助かります！
