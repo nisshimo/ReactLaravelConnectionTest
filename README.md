@@ -14,11 +14,15 @@ $ node MockApi/server.js
 
 localhost:8000 でサーバーが起動します。
 
+#### Local Server が立ち上がっているかのテスト
+
+##### 例 1
+
 ```
 curl http://localhost:8000/users
 ```
 
-とすると、以下の出力が得られます。
+としたときに、以下の出力が得られたら OK です。
 
 ```
 {
@@ -39,11 +43,13 @@ curl http://localhost:8000/users
 }
 ```
 
+##### 例 2
+
 ```
 curl http://localhost:8000/users
 ```
 
-とすると、以下の出力が得られます。
+としたときに、以下の出力が得られたら OK です。
 
 ```
 {
@@ -92,6 +98,8 @@ yarn start
 
 で、React のサーバーが起動します。
 
+### 正しく動作しているかの確認
+
 `localhost:3000/users` にアクセスすると、ユーザー一覧ページ
 `localhost:3000/users/:id` にアクセスすると、ユーザー詳細ページが表示されると思います。
 
@@ -107,10 +115,11 @@ if (document.getElementById("reactApp")) {
 }
 ```
 
-！[https://migisanblog.com/laravel-react-install/](https://migisanblog.com/laravel-react-install/)
+[https://migisanblog.com/laravel-react-install/](https://migisanblog.com/laravel-react-install/)
 
 上の記事を参照して、Laravel で App を読み込んだときに
 
 - Api の結果を受け取って正しくレンダリングできているか？
 - User 一覧の各 User を押したときに、正しく User 詳細ページに飛ぶか？
-  を検証していただけると助かります！
+
+を検証していただけると助かります！
